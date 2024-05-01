@@ -16,6 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan(node_env));
 
 app.use("/", router);
+app.get("/testConnectApi", (req, res) => {
+  res.status(200).json({ message: "connect api complete" });
+});
 
 app.all("*", notFound);
 app.use(apiError);
