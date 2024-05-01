@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const router = require("./routes/router");
 const morgan = require("morgan");
 const { notFound, apiError } = require("./utils/apiError");
@@ -11,6 +12,7 @@ const node_env = process.env.NODE_ENV || "dev";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan(node_env));
